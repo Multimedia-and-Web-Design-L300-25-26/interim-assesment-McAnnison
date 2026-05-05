@@ -14,7 +14,8 @@ const initialCoins = [
 
 const seedDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI);
+    const DB = process.env.MONGODB_URI || 'mongodb://localhost:27017/coinbase-clone';
+    await mongoose.connect(DB);
     console.log('Connected to DB for seeding...');
     
     await Crypto.deleteMany({});
